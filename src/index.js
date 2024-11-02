@@ -1,12 +1,8 @@
 const fastify = require("fastify")({ logger: true }); // calling the fastify constructor
 
 const app = require("./app");
+const { PORT } = require("./config/serverConfig");
 
-const PORT = 3000;
-
-// fastify.get("/ping", (req, res) => {
-//   res.send({ data: "pong" });
-// });
 fastify.register(app);
 
 fastify.listen({ port: 3000 }, (err) => {
