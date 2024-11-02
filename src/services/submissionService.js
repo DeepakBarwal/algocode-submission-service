@@ -7,14 +7,15 @@ class SubmissionService {
   }
 
   async addSubmission(submission) {
-    const submission = this.submissionRepository.createSubmission(submission);
-    if (!submission) {
+    const submissionResponse =
+      this.submissionRepository.createSubmission(submission);
+    if (!submissionResponse) {
       // TODO: Add error handling here
       throw { message: "Not able to create submission" };
     }
     console.log(submission);
-    const response = await submissionProducer(submission);
-    return { queueResponse: response, submission };
+    const response = await submissionProducer(submissionResponse);
+    return { queueResponse: response, submission: submissionResponse };
   }
 }
 
