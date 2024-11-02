@@ -11,6 +11,6 @@ fastify.listen({ port: 3000 }, async (err) => {
     fastify.log.error(err);
     process.exit(1);
   }
-  await connectToDb;
+  await connectToDb();
   console.log(`Server up at port *${PORT}`);
 });

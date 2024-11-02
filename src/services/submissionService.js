@@ -7,8 +7,9 @@ class SubmissionService {
   }
 
   async addSubmission(submission) {
-    const submissionResponse =
-      this.submissionRepository.createSubmission(submission);
+    const submissionResponse = await this.submissionRepository.createSubmission(
+      submission
+    );
     if (!submissionResponse) {
       // TODO: Add error handling here
       throw { message: "Not able to create submission" };
